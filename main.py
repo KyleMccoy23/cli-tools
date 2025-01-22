@@ -11,7 +11,7 @@ def dl_cleaner(dirs: dict) -> None:
     if os.scandir(source_path) is None:
         print('source is empty')
         return
-
+    count = 0
     for i in os.scandir(source_path):
         if ".exe" in i.name or ".msi" in i.name:
             shutil.move(i.path, f'{dest_path}\\Applications')
@@ -25,7 +25,10 @@ def dl_cleaner(dirs: dict) -> None:
             shutil.move(i.path, f'{dest_path}\\images')
         else:
             shutil.move(i.path, f'{dest_path}\\Misc')
-
+        count += 1
+    print(f"Moved {count} files to the sorted dounloads folder\nPath: {dest_path}")
+    
+    
 def main() -> None:
     with open("config.json", "r") as f:
         conf = json.load(f)
