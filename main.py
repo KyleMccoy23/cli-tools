@@ -1,4 +1,4 @@
-import json
+import json, os
 
 def dl_cleaner(dirs: dict) -> None:
         
@@ -30,9 +30,11 @@ def dl_cleaner(dirs: dict) -> None:
     
     
 def main() -> None:
-    with open("config.json", "r") as f:
-        conf = json.load(f)
-
+    try:    
+        with open("config.json", "r") as f:
+            conf = json.load(f)
+    except:
+        os.system('setup.bat')
     print("""cli-tools
 1. Download Cleaner
 2.test2
