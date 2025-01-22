@@ -1,12 +1,37 @@
 import json
 
+def dl_cleaner(dirs: dict) -> None:
+        
+    import shutil
+    import os
+
+    source_path = dirs['download-folder']
+    dest_path = dirs['save-folder']
+        
+    if os.scandir(source_path) is None:
+        print('source is empty')
+        return
+
+    for i in os.scandir(source_path):
+        if ".exe" in i.name or ".msi" in i.name:
+            shutil.move(i.path, f'{dest_path}\\Applications')
+        elif ".pdf" in i.name:
+            shutil.move(i.path, f'{dest_path}\\pdf')
+        elif ".docx" in i.name:
+            shutil.move(i.path, f'{dest_path}\\documents')
+        elif '.zip' in i.name:
+            shutil.move(i.path, f'{dest_path}\\archives')
+        elif '.png' in i.name or '.webp' in i.name or '.jpg' in i.name or '.jpeg' in i.name :
+            shutil.move(i.path, f'{dest_path}\\images')
+        else:
+            shutil.move(i.path, f'{dest_path}\\Misc')
 
 def main() -> None:
     with open("config.json", "r") as f:
         conf = json.load(f)
 
     print("""cli-tools
-1.test
+1. Download Cleaner
 2.test2
 3.test3
 4.test4
@@ -14,7 +39,7 @@ def main() -> None:
     _in = input(">> ")
     match _in:
         case "1":
-            print("test")
+            dl_cleaner(conf['download-cleaner-dirs'])
         case "2":
             print("test2")
         case "3":

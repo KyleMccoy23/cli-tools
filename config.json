@@ -1,7 +1,7 @@
 {
-    "Downloader": {
+    "download-cleaner-dirs": {
         "download-folder": "C:\\Users\\User\\Downloads\\",
-        "save-folder": "C:\\Users\\User\\Desktop\\"
+        "save-folder": "C:\\Users\\kylem\\Documents\\Sorted Downloads\\"
     },
     "Settings": {
         
