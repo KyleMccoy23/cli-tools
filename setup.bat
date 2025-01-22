@@ -24,12 +24,17 @@ if %errorlevel% equ 0 (
 
 REM Prompt user for the folder to add to the user PATH
 echo Please enter the full path of the folder to add to the user PATH:
-set /p file_path=
+set file_path=%~dp0
 
 REM Add the user-specified folder to the user PATH
 setx PATH "%file_path%;%PATH%"
 
 REM Display success message
 echo Added %file_path% to the user PATH.
+
+
+REM ADD CONFIG SETUP python ez
+
+
 echo Script completed.
 pause

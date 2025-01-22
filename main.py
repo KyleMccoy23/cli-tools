@@ -4,6 +4,7 @@ import json
 def main() -> None:
     with open("config.json", "r") as f:
         conf = json.load(f)
+
     print("""cli-tools
 1.test
 2.test2
